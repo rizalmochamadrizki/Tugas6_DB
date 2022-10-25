@@ -1,0 +1,14 @@
+//2 menunjukkan berapa lama postingan tersebut dipost
+DELIMITER //
+CREATE FUNCTION lama_postingan(date1 DATE) RETURNS INT DETERMINISTIC
+BEGIN
+ DECLARE date2 DATE;
+  SELECT CURRENT_DATE()INTO date2;
+  RETURN (TO_DAYS(date2)-TO_DAYS(date1));
+END 
+//
+DELIMITER ;
+
+//pemanggilan
+SELECT id, ig_username, url, like_count, comment_count, (lama_postingan(taken_at)) AS umur_postingan_dalam_hari
+FROM tbl_scraping

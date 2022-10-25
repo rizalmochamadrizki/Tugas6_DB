@@ -1,0 +1,10 @@
+//3 menghitung jumlah postingan di tahun 2021
+
+CREATE VIEW user_post_2021 AS
+SELECT ig_username, COUNT(ig_username) AS total_konten_di_2021
+FROM tbl_scraping
+WHERE taken_at BETWEEN '2021-01-01' AND '2022-01-01'
+GROUP BY ig_username
+
+//pemanggilan
+SELECT * FROM user_post_2021

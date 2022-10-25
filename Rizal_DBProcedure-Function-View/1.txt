@@ -1,0 +1,11 @@
+//1 menampilkan postingan dengan 0 komentar
+DELIMITER &&  
+CREATE OR REPLACE PROCEDURE get_zero_comments()  
+BEGIN  
+    SELECT tbl_scraping.`id`, tbl_scraping.`ig_username`, tbl_scraping.`url`, tbl_scraping.`comment_count` 
+    FROM tbl_scraping WHERE comment_count = 0;    
+END &&  
+DELIMITER ;
+
+//pemanggilan
+CALL get_zero_comments()
